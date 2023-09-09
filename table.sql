@@ -1,5 +1,10 @@
+DROP TRIGGER IF EXISTS watch_realtime_table_trigger ON realtime_table;
+DROP TABLE IF EXISTS realtime_table;
+DROP FUNCTION IF EXISTS notify_trigger;
+
 /* Replace with your SQL commands */
-CREATE TABLE realtime_table (id serial primary key, key varchar, value varchar);
+CREATE TABLE realtime_table (id serial primary key, key varchar, type varchar,
+    value_int NUMERIC, value_float double precision, value_str text);
 CREATE FUNCTION notify_trigger() RETURNS trigger AS $$
 DECLARE
 BEGIN

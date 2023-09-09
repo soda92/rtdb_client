@@ -22,4 +22,7 @@ def handle_notify():
 asyncio.set_event_loop_policy(asyncio.WindowsSelectorEventLoopPolicy())
 loop = asyncio.get_event_loop()
 loop.add_reader(conn, handle_notify)
-loop.run_forever()
+try:
+    loop.run_forever()
+finally:
+    loop.close()
